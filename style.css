@@ -53,7 +53,8 @@ button {
   background-color: yellow;
 }
 
-#fill, 
+#fill,
+#transparent,
 #clear {
   font-size: 300%;
 }
