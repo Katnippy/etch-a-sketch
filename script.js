@@ -6,6 +6,7 @@ function drawColumn(cells) {
   container.appendChild(column);
 }
 
+// Draw amount * amount cells with / 16 columns.
 function drawCells(amount) {
   const cells = document.createDocumentFragment();
   for (let i = 0; i <= amount; i++) {
@@ -20,6 +21,7 @@ function drawCells(amount) {
 
 drawCells(256);
 
+// Colour cells on mouseover in the currently selected colour.
 let selectedColour = 'black';
 const cells = document.querySelectorAll('.cell');
 cells.forEach((cell) => {
@@ -28,10 +30,16 @@ cells.forEach((cell) => {
   });
 });
 
+// Change between the fill, clear, and colour modes when the appropriate 
+// button is selected.
 const buttons = document.querySelectorAll('button')
 buttons.forEach((button) => {
   button.addEventListener('click', () => {
-    if (button.getAttribute('id') === 'clear') {
+    if (button.getAttribute('id') === 'fill') {
+      cells.forEach((cell) => {
+        cell.style = `background-color: ${selectedColour};`;
+    });
+    } else if (button.getAttribute('id') === 'clear') {
       cells.forEach((cell) => {
         cell.style.removeProperty('background-color');
       });
@@ -40,4 +48,3 @@ buttons.forEach((button) => {
     }
   });
 });   
-
