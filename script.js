@@ -1,5 +1,5 @@
+const container = document.querySelector('#container')
 function drawColumn(cells) {
-  const container = document.querySelector('#container');
   const column = document.createElement('div');
   column.className = 'column';
   column.appendChild(cells);
@@ -20,11 +20,24 @@ function drawCells(amount) {
 
 drawCells(256);
 
-const grid = document.querySelectorAll('.cell');
-grid.forEach((c) => {
-  c.addEventListener('mouseover', () => {
-    c.style = 'background-color: black;';
+let selectedColour = 'black';
+const cells = document.querySelectorAll('.cell');
+cells.forEach((cell) => {
+  cell.addEventListener('mouseover', () => {
+    cell.style = `background-color: ${selectedColour};`;
   });
 });
 
+const buttons = document.querySelectorAll('button')
+buttons.forEach((button) => {
+  button.addEventListener('click', () => {
+    if (button.getAttribute('id') === 'clear') {
+      cells.forEach((cell) => {
+        cell.style.removeProperty('background-color');
+      });
+    } else {
+      selectedColour = button.getAttribute('id');
+    }
+  });
+});   
 

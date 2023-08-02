@@ -11,13 +11,48 @@ body {
   min-height: 100vh;
 }
 
-/*.column {
-  
-}*/
-
 .cell {
   border: solid;
   margin: 1px;
   width: 2rem;
   height: 2rem;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  margin-right: 2rem;
+}
+
+button {
+  width: 4rem;
+  height: 4rem;
+}
+
+#black {
+  background-color: black;
+}
+
+#white {
+  background-color: white;
+}
+
+#red {
+  background-color: red;
+}
+
+#green {
+  background-color: green;
+}
+
+#blue {
+  background-color: blue;
+}
+
+#yellow {
+  background-color: yellow;
+}
+
+#clear {
+  font-size: 300%;
 }
