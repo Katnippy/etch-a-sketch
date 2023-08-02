@@ -19,3 +19,12 @@ function drawCells(amount) {
 } 
 
 drawCells(256);
+
+const grid = document.querySelectorAll('.cell');
+grid.forEach((c) => {
+  c.addEventListener('mouseover', () => {
+    c.style = 'background-color: black;';
+  });
+});
+
+
