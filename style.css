@@ -18,4 +18,6 @@ body {
 .cell {
   border: solid;
   margin: 1px;
+  width: 2rem;
+  height: 2rem;
 }
