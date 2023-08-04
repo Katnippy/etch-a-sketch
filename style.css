@@ -1,14 +1,22 @@
 body {
   background-color: pink;
+  font-family: Rubik;
   margin: 0;
   padding: 0;
 }
 
+/* TODO: make sure the flex works properly and on mobile devices, also, not*/
+/* TODO: all styling may be necessary*/
 #container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+}
+
+/* TODO: move the form to the top of the grid */
+input {
+  width: 3rem;
 }
 
 .cell {
@@ -53,8 +61,17 @@ button {
   background-color: yellow;
 }
 
+/* TODO: maybe style these buttons a bit better*/
 #fill,
 #transparent,
 #clear {
   font-size: 300%;
+}
+
+/* TODO: not all styling may be necessary*/
+.grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
