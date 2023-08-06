@@ -29,7 +29,6 @@ form.addEventListener('submit', (e) => {
   }
 });
 
-// TODO: change behaviour from mouseover to click and hold
 // If a grid doesn't already exist, draw a grid of colourable cells with its 
 // dimensions defined by user input.
 let selectedColour = 'black';
@@ -42,8 +41,10 @@ function drawGrid(xAmount, yAmount) {
     }
     const cell = document.createElement('div');
     cell.className = 'cell';
-    cell.addEventListener('mouseover', () => {
-      cell.style = `background-color: ${selectedColour};`;
+    cell.addEventListener('mouseover', (e) => {
+      if (e.buttons === 1) {
+        cell.style = `background-color: ${selectedColour};`;
+      }
     });
     cells.appendChild(cell);
   }
