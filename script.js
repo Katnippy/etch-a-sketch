@@ -1,14 +1,4 @@
-// TODO: add default grid when page loaded
 const grid = document.querySelector('.grid')
-function checkCellsNotAlreadyDrawn() {
-  if (document.querySelector('.cell')) {
-    const drawnColumns = document.querySelectorAll('.column');
-    for (const drawnColumn of drawnColumns) {
-      grid.removeChild(drawnColumn);
-    }
-  }
-}
-
 function drawColumn(cells) {
   const column = document.createElement('div');
   column.className = 'column';
@@ -16,18 +6,13 @@ function drawColumn(cells) {
   grid.appendChild(column);
 }
 
-// TODO: resize cells depending on amount (needs a maximum)
-// Draw a grid of 
-function drawGrid(xAmount, yAmount) {
-  checkCellsNotAlreadyDrawn();
-  const cells = document.createDocumentFragment();
-  for (let i = 0; i <= xAmount * yAmount; i++) {
-    if (i > 0 && i % yAmount === 0) {
-      drawColumn(cells)
+// TODO: add default grid when page loaded
+function checkGridNotAlreadyDrawn() {
+  if (document.querySelector('.cell')) {
+    const drawnColumns = document.querySelectorAll('.column');
+    for (const drawnColumn of drawnColumns) {
+      grid.removeChild(drawnColumn);
     }
-    const cell = document.createElement('div');
-    cell.className = 'cell';
-    cells.appendChild(cell);
   }
 }
 
@@ -45,19 +30,31 @@ form.addEventListener('submit', (e) => {
 });
 
 // TODO: change behaviour from mouseover to click and hold
-// Colour cells on mouseover in the currently selected colour.
+// If a grid doesn't already exist, draw a grid of colourable cells with its 
+// dimensions defined by user input.
 let selectedColour = 'black';
-const cells = document.querySelectorAll('.cell');
-cells.forEach((cell) => {
-  cell.addEventListener('mouseover', () => {
-    cell.style = `background-color: ${selectedColour};`;
-  });
-});
+function drawGrid(xAmount, yAmount) {
+  checkGridNotAlreadyDrawn();
+  const cells = document.createDocumentFragment();
+  for (let i = 0; i <= xAmount * yAmount; i++) {
+    if (i > 0 && i % yAmount === 0) {
+      drawColumn(cells);
+    }
+    const cell = document.createElement('div');
+    cell.className = 'cell';
+    cell.addEventListener('mouseover', () => {
+      cell.style = `background-color: ${selectedColour};`;
+    });
+    cells.appendChild(cell);
+  }
+}
 
 // TODO: make colours selected look held down
 // Change between the fill, clear, and transparent and colour modes when the 
 // appropriate button is selected.
 const buttons = document.querySelectorAll('button')
+const cells = document.querySelectorAll('.cell');
+console.log('button');
 buttons.forEach((button) => {
   button.addEventListener('click', () => {
     if (button.getAttribute('id') === 'fill') {
@@ -72,4 +69,4 @@ buttons.forEach((button) => {
       selectedColour = button.getAttribute('id');
     }
   });
-});   
+});
