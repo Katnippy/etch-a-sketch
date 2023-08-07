@@ -1,4 +1,4 @@
-//
+// Split cells into equal columns.
 const grid = document.querySelector('.grid')
 function drawColumn(cells) {
   const column = document.createElement('div');
@@ -7,7 +7,7 @@ function drawColumn(cells) {
   grid.appendChild(column);
 }
 
-//
+// If a grid already exists, delete it.
 function checkGridNotAlreadyDrawn() {
   if (document.querySelector('.cell')) {
     const drawnColumns = document.querySelectorAll('.column');
@@ -17,17 +17,17 @@ function checkGridNotAlreadyDrawn() {
   }
 }
 
-// TODO: (currently broken) make error come from form instead of page
+// TODO: make error come from form instead of page
 //
 const form = document.querySelector('.form')
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   const xAmount = document.querySelector('#x-amount').value;
   const yAmount = document.querySelector('#y-amount').value;
-  if (xAmount.value === '' || yAmount.value === '') {
-    alert('Please enter a number.');
+  if (xAmount && yAmount) {
+    drawGrid(xAmount, yAmount)
   } else {
-    drawGrid(xAmount, yAmount);
+    alert('Please enter a number.');
   }
 });
 
@@ -62,7 +62,6 @@ window.addEventListener('load', (e) => {
 // appropriate button is selected.
 const buttons = document.querySelectorAll('button')
 const cells = document.querySelectorAll('.cell');
-console.log('button');
 buttons.forEach((button) => {
   button.addEventListener('click', () => {
     if (button.getAttribute('id') === 'fill') {
