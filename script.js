@@ -1,3 +1,4 @@
+//
 const grid = document.querySelector('.grid')
 function drawColumn(cells) {
   const column = document.createElement('div');
@@ -6,7 +7,7 @@ function drawColumn(cells) {
   grid.appendChild(column);
 }
 
-// TODO: add default grid when page loaded
+//
 function checkGridNotAlreadyDrawn() {
   if (document.querySelector('.cell')) {
     const drawnColumns = document.querySelectorAll('.column');
@@ -17,6 +18,7 @@ function checkGridNotAlreadyDrawn() {
 }
 
 // TODO: (currently broken) make error come from form instead of page
+//
 const form = document.querySelector('.form')
 form.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -50,7 +52,12 @@ function drawGrid(xAmount, yAmount) {
   }
 }
 
-// TODO: make colours selected look held down
+// Draw a default 150x150 grid on page load.
+window.addEventListener('load', (e) => {
+  drawGrid(150, 150);
+});
+
+// TODO: make colours selected look held down and fix broken fill and clear
 // Change between the fill, clear, and transparent and colour modes when the 
 // appropriate button is selected.
 const buttons = document.querySelectorAll('button')
