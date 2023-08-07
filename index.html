@@ -11,27 +11,31 @@
 </head>
 <body>
   <div id="container">
-    <div class="form">
-      <form name="form">
-        <label for="x-amount">x-axis: </label>
-        <input type="number" id="x-amount" name="x-amount" min="1" max="150">
-        <label for="y-amount">y-axis: </label>
-        <input type="number" id="y-amount" name="y-amount" min="1" max="150">
-        <input type="submit" value="OK">
-      </form>
+    <div id="top-elements">
+      <div class="form">
+        <form name="form">
+          <label for="x-amount">x-axis: </label>
+          <input type="number" id="x-amount" name="x-amount" min="1" max="150">
+          <label for="y-amount">y-axis: </label>
+          <input type="number" id="y-amount" name="y-amount" min="1" max="150">
+          <input type="submit" value="OK">
+        </form>
+      </div>
     </div>
-    <div class="buttons">
-      <button id="black"></button>
-      <button id="white"></button>
-      <button id="red"></button>
-      <button id="green"></button>
-      <button id="blue"></button>
-      <button id="yellow"></button>
-      <button id="fill"><i class="fa-solid fa-fill-drip"></i></button>
-      <button id="transparent"><i class="fa-solid fa-eraser"></i></button>
-      <button id="clear"><i class="fa-solid fa-trash"></i></button>
+    <div id="bottom-elements">
+      <div class="buttons">
+        <button id="black"></button>
+        <button id="white"></button>
+        <button id="red"></button>
+        <button id="green"></button>
+        <button id="blue"></button>
+        <button id="yellow"></button>
+        <button id="fill"><i class="fa-solid fa-fill-drip"></i></button>
+        <button id="transparent"><i class="fa-solid fa-eraser"></i></button>
+        <button id="clear"><i class="fa-solid fa-trash"></i></button>
+      </div>
+      <div class="grid"></div>
     </div>
-    <div class="grid"></div>
   </div>
 </body>
 </html>

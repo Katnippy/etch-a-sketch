@@ -5,22 +5,24 @@ body {
   padding: 0;
 }
 
-/* TODO: make sure the flex works properly and on mobile devices, also, not*/
-/* TODO: all styling may be necessary*/
-#container {
+/* TODO: make sure the flex works properly*/
+#top-elements {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  min-height: 15vh;
+  margin-bottom: 0.5rem;
+}
+
+#bottom-elements {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-}
-
-/* TODO: move the form to the top of the grid */
-.form {
-
 }
 
 input {
   width: 3rem;
+  margin-right: 0.5rem;
 }
 
 .buttons {
