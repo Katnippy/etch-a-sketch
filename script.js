@@ -59,18 +59,19 @@ document.addEventListener('dragstart', (e) => {
   }
 });
 
-// TODO: make colours selected look held down and fix broken fill and clear
+// TODO: make colours selected look held down
 // Change between the fill, clear, and transparent and colour modes when the 
 // appropriate button is selected.
 const buttons = document.querySelectorAll('button');
-const cells = document.querySelectorAll('.cell');
 buttons.forEach((button) => {
   button.addEventListener('click', () => {
     if (button.getAttribute('id') === 'fill') {
+      const cells = document.querySelectorAll('.cell');
       cells.forEach((cell) => {
         cell.style = `background-color: ${selectedColour};`;
     });
     } else if (button.getAttribute('id') === 'clear') {
+      const cells = document.querySelectorAll('.cell');
       cells.forEach((cell) => {
         cell.style.removeProperty('background-color');
     });
