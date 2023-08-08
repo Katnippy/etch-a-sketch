@@ -1,5 +1,5 @@
 // Split cells into equal columns.
-const grid = document.querySelector('.grid')
+const grid = document.querySelector('.grid');
 function drawColumn(cells) {
   const column = document.createElement('div');
   column.className = 'column';
@@ -17,18 +17,13 @@ function checkGridNotAlreadyDrawn() {
   }
 }
 
-// TODO: make error come from form instead of page
-//
-const form = document.querySelector('.form')
+// On submit, draw a grid with the desired dimensions.
+const form = document.querySelector('.form');
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   const xAmount = document.querySelector('#x-amount').value;
   const yAmount = document.querySelector('#y-amount').value;
-  if (xAmount && yAmount) {
-    drawGrid(xAmount, yAmount)
-  } else {
-    alert('Please enter a number.');
-  }
+  drawGrid(xAmount, yAmount);
 });
 
 // If a grid doesn't already exist, draw a grid of colourable cells with its 
@@ -53,14 +48,21 @@ function drawGrid(xAmount, yAmount) {
 }
 
 // Draw a default 150x150 grid on page load.
-window.addEventListener('load', (e) => {
+window.addEventListener('load', () => {
   drawGrid(150, 150);
+});
+
+// Prevent cells from being draggable.
+document.addEventListener('dragstart', (e) => {
+  if (e.target.parentNode.localName === 'div') {
+    e.preventDefault();
+  }
 });
 
 // TODO: make colours selected look held down and fix broken fill and clear
 // Change between the fill, clear, and transparent and colour modes when the 
 // appropriate button is selected.
-const buttons = document.querySelectorAll('button')
+const buttons = document.querySelectorAll('button');
 const cells = document.querySelectorAll('.cell');
 buttons.forEach((button) => {
   button.addEventListener('click', () => {
