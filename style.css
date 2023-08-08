@@ -65,6 +65,7 @@ button {
 #fill,
 #transparent,
 #clear {
+  background-color: lightgray;
   font-size: 300%;
 }
 
