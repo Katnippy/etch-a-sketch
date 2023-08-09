@@ -74,10 +74,6 @@ button {
   font-size: 300%;
 }
 
-.active {
-  background-color: purple;
-}
-
 /* TODO: not all styling may be necessary*/
 .grid {
   display: flex;
