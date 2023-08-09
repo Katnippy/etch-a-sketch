@@ -7,7 +7,6 @@ function drawColumn(cells) {
   grid.appendChild(column);
 }
 
-// If a grid already exists, delete it.
 function checkGridNotAlreadyDrawn() {
   if (document.querySelector('.cell')) {
     const drawnColumns = document.querySelectorAll('.column');
@@ -17,6 +16,21 @@ function checkGridNotAlreadyDrawn() {
   }
 }
 
+function checkGridSizeNotAlreadyPrinted() {
+  if (document.querySelector('.grid-size')) {
+    document.querySelector('.grid-size').remove();
+  }
+}
+
+function printCurrentGridSize(xAmount, yAmount) {
+  checkGridSizeNotAlreadyPrinted();
+  const gridSize = document.createElement('h4');
+  gridSize.className = 'grid-size';
+  gridSize.textContent = `${xAmount} x ${yAmount}`;
+  const topElements = document.querySelector('#top-elements');
+  topElements.appendChild(gridSize);
+}
+
 // On submit, draw a grid with the desired dimensions.
 const form = document.querySelector('.form');
 form.addEventListener('submit', (e) => {
@@ -24,10 +38,10 @@ form.addEventListener('submit', (e) => {
   const xAmount = document.querySelector('#x-amount').value;
   const yAmount = document.querySelector('#y-amount').value;
   drawGrid(xAmount, yAmount);
+  printCurrentGridSize(xAmount, yAmount);
 });
 
-// If a grid doesn't already exist, draw a grid of colourable cells with its 
-// dimensions defined by user input.
+// Draw a grid of colourable cells with its dimensions defined by user input.
 let selectedColour = 'black';
 function drawGrid(xAmount, yAmount) {
   checkGridNotAlreadyDrawn();
@@ -50,6 +64,7 @@ function drawGrid(xAmount, yAmount) {
 // Draw a default 150x150 grid on page load.
 window.addEventListener('load', () => {
   drawGrid(150, 150);
+  printCurrentGridSize(150, 150);
 });
 
 // Prevent cells from being draggable.
@@ -60,8 +75,8 @@ document.addEventListener('dragstart', (e) => {
 });
 
 // TODO: make colours selected look held down
-// Change between the fill, clear, and transparent and colour modes when the 
-// appropriate button is selected.
+// Change between the fill, clear, and transparent and colour modes when the
+// user selects the appropriate button.
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
   button.addEventListener('click', () => {

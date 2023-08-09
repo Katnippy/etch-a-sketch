@@ -25,6 +25,12 @@ input {
   margin-right: 0.5rem;
 }
 
+h4 {
+  margin: 0;
+  margin-left: 0.5rem;
+  padding-bottom: 0.1rem;
+}
+
 .buttons {
   display: flex;
   flex-direction: column;
@@ -61,12 +67,15 @@ button {
   background-color: yellow;
 }
 
-/* TODO: maybe style these buttons a bit better*/
 #fill,
 #transparent,
 #clear {
   background-color: lightgray;
   font-size: 300%;
+}
+
+.active {
+  background-color: purple;
 }
 
 /* TODO: not all styling may be necessary*/
