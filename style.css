@@ -39,8 +39,15 @@ h4 {
 }
 
 button {
+  position: relative;
   width: 4rem;
   height: 4rem;
+}
+
+.active {
+  top: 2px;
+  bottom: 1px;
+  box-shadow: none;
 }
 
 #black {
@@ -68,7 +75,7 @@ button {
 }
 
 #fill,
-#transparent,
+#eraser,
 #clear {
   background-color: lightgray;
   font-size: 300%;

@@ -1,21 +1,37 @@
-// TODO: make colours selected look held down
-// Change between the fill, clear, and transparent and colour modes when the
-// user selects the appropriate button.
+// TODO: fix for colour buttons vs mode buttons
+function activateButton(buttonToActivate) {
+  for (const button of buttons) {
+    if (button.classList.contains('active')) {
+      button.classList.remove('active');
+    }
+  }
+  buttonToActivate.classList.add('active');
+}
+
+// Change between the fill, eraser, clear, and colour modes when the user 
+// selects the appropriate button.
+let gridColour = 'white';
+let brushColour = 'black';
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
   button.addEventListener('click', () => {
+    activateButton(button);
     if (button.getAttribute('id') === 'fill') {
       const cells = document.querySelectorAll('.cell');
       cells.forEach((cell) => {
-        cell.style = `background-color: ${selectedColour};`;
-    });
+        gridColour = brushColour;
+        cell.style = `background-color: ${brushColour};`;
+        console.log(gridColour);
+      });
+    } else if (button.getAttribute('id') === 'eraser') {
+      brushColour = gridColour;
     } else if (button.getAttribute('id') === 'clear') {
       const cells = document.querySelectorAll('.cell');
       cells.forEach((cell) => {
-        cell.style.removeProperty('background-color');
-    });
+        cell.style = `background-color: ${gridColour}`;
+      });
     } else {
-      selectedColour = button.getAttribute('id');
+      brushColour = button.getAttribute('id');
     }
   });
 });
@@ -61,7 +77,6 @@ function checkGridNotAlreadyDrawn() {
 }
 
 // Draw a grid of colourable cells with its dimensions defined by user input.
-let selectedColour = 'black';
 function drawGrid(xAmount, yAmount) {
   checkGridNotAlreadyDrawn();
   const cells = document.createDocumentFragment();
@@ -73,7 +88,7 @@ function drawGrid(xAmount, yAmount) {
     cell.className = 'cell';
     cell.addEventListener('mouseover', (e) => {
       if (e.buttons === 1) {
-        cell.style = `background-color: ${selectedColour};`;
+        cell.style = `background-color: ${brushColour};`;
       }
     });
     cells.appendChild(cell);
@@ -91,7 +106,9 @@ form.addEventListener('submit', (e) => {
 });
 
 // Draw a default 150x150 grid on page load.
+const defaultBrush = document.querySelector('#black');
 window.addEventListener('load', () => {
   drawGrid(150, 150);
   printCurrentGridSize(150, 150);
+  defaultBrush.classList.add('active');
 });
